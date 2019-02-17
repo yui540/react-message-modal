@@ -1,0 +1,12 @@
+LICENSE
+src/
+res/
+examples/
+README.md
+.babelrc
+.npmrc
+.prettierrc
+.prettierignore
+.editorconfig
+.keep
+webpack.config.js
