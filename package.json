@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src --out-dir lib",
+    "build": "babel src/MessageModal --out-dir lib",
     "serve": "cross-env MODE=development webpack-dev-server",
     "watch": "cross-env MODE=development webpack --watch",
     "webpack:dev": "cross-env MODE=development webpack",
