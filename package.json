@@ -1,6 +1,6 @@
 {
   "name": "@yui540/react-message-modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "『メッセージが届いています。』",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
     "webpack:dev": "cross-env MODE=development webpack",
     "webpack:prod": "cross-env MODE=production webpack",
     "webpack": "npm-run-all webpack:prod",
+    "prepublish": "rm -rf lib && npm run build",
     "fmt": "prettier --write \"**/*.{js,jsx,md,json}\""
   },
   "husky": {
