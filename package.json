@@ -12,7 +12,7 @@
     "webpack:prod": "cross-env MODE=production webpack",
     "webpack": "npm-run-all webpack:prod",
     "prepublish": "rm -rf lib && npm run build",
-    "fmt": "prettier --write \"**/*.{js,jsx,md,json}\""
+    "fmt": "prettier --write \"**/*.{js,jsx,json}\""
   },
   "husky": {
     "hooks": {
@@ -20,7 +20,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,md}": [
+    "*.{js,jsx,json}": [
       "prettier --write",
       "git add"
     ]

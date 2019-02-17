@@ -38,14 +38,14 @@ const subColor = '#ffffff'
 const onClose = () => console.log('close')
 const sp = !(window.innerWidth > 760)
 const props = {
-  title, // [type: string] メッセージモーダルのタイトル
-  fontColor, // [type: string][options] モーダルのタイトル色
-  okColor, // [type: string][options] OKボタンの色
+  title,       // [type: string] メッセージモーダルのタイトル
+  fontColor,   // [type: string][options] モーダルのタイトル色
+  okColor,     // [type: string][options] OKボタンの色
   cancelColor, // [type: string][options] キャンセルボタンの色
-  mainColor, // [type: string][options] モーダルのメインカラー
-  subColor, // [type: string][options] モーダルのサブカラー
-  onClose, // [type: func][options] モーダルを閉じた時に呼ばれる関数
-  sp, // [type: bool][options] スマートフォンか否か
+  mainColor,   // [type: string][options] モーダルのメインカラー
+  subColor,    // [type: string][options] モーダルのサブカラー
+  onClose,     // [type: func][options] モーダルを閉じた時に呼ばれる関数
+  sp,          // [type: bool][options] スマートフォンか否か
 }
 
 /*
@@ -59,8 +59,7 @@ subColor    = '#ffffff'
 */
 
 render(
-  // MessageModalの子要素がメッセージの内容になります
-  <MessageModal {...props}>
+  <MessageModal {...props}> // MessageModalの子要素がメッセージの内容になります
     <div>
       <h1>はじめまして。</h1>
       <p>はじめまして。yui540です。</p>
