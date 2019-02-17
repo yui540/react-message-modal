@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 6006",
     "build": "babel src/MessageModal --out-dir lib",
     "serve": "cross-env MODE=development webpack-dev-server",
     "watch": "cross-env MODE=development webpack --watch",
@@ -12,7 +13,8 @@
     "webpack:prod": "cross-env MODE=production webpack",
     "webpack": "npm-run-all webpack:prod",
     "prepublish": "rm -rf lib && npm run build",
-    "fmt": "prettier --write \"**/*.{js,jsx,json}\""
+    "fmt": "prettier --write \"**/*.{js,jsx,json}\"",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -42,6 +44,7 @@
     "@babel/polyfill": "7.2.5",
     "@babel/preset-env": "7.3.1",
     "@babel/preset-react": "7.0.0",
+    "@storybook/cli": "4.1.11",
     "babel-loader": "8.0.5",
     "cross-env": "5.2.0",
     "husky": "1.3.1",
@@ -52,7 +55,11 @@
     "react-dom": "16.8.2",
     "webpack": "4.29.4",
     "webpack-cli": "3.2.3",
-    "webpack-dev-server": "3.1.14"
+    "webpack-dev-server": "3.1.14",
+    "@storybook/react": "^4.1.11",
+    "@storybook/addon-actions": "^4.1.11",
+    "@storybook/addon-links": "^4.1.11",
+    "@storybook/addons": "^4.1.11"
   },
   "dependencies": {
     "proptypes": "1.1.0",
