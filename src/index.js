@@ -26,7 +26,7 @@ const Title = styled.h3`
   line-height: 34px;
   color: #5d3523;
   padding: 5px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   border-bottom: dashed 1px #ccc;
 `
@@ -42,7 +42,6 @@ const Description = styled.p`
   word-wrap: break-word;
 `
 
-const title = 'はじめまして。'
 const description = `
   はじめまして。yui540です。
   ここ最近は更新が止まっていましたが、
@@ -50,11 +49,39 @@ const description = `
   このコンポーネントは、npmで配布しています。
 `.replace(/^\n/, '')
 
+// props
+const className = 'message-modal'
+const title = 'メッセージが届いています。'
+const fontColor = '#5d3523'
+const okColor = '#90bdbd'
+const cancelColor = '#ea8b98'
+const mainColor = '#e4d6ce'
+const subColor = '#ffffff'
+const onClose = () => console.log('close')
+const sp = !(window.innerWidth > 760)
+const props = {
+  title, // [type: string] メッセージモーダルのタイトル
+  fontColor, // [type: string][options] モーダルのタイトル色
+  okColor, // [type: string][options] OKボタンの色
+  cancelColor, // [type: string][options] キャンセルボタンの色
+  mainColor, // [type: string][options] モーダルのメインカラー
+  subColor, // [type: string][options] モーダルのサブカラー
+  onClose, // [type: func][options] モーダルを閉じた時に呼ばれる関数
+  sp, // [type: bool][options] スマートフォンか否か
+}
+/*
+各色のデフォルトの値は下記の通り
+
+fontColor = '#5d3523
+okColor = '#90bdbd'
+cancelColor = '#ea8b98'
+mainColor = '#e4d6ce'
+subColor = '#ffffff'
+*/
+
 render(
   <Container>
-    <MessageModal
-      title='メッセージが届いています'
-      onClose={() => console.log('close')}>
+    <MessageModal {...props}>
       <Wrapper>
         <Title>はじめまして。</Title>
         <Description>{description}</Description>
