@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import {
   popupModal,
   hiddenModal,
@@ -14,20 +14,28 @@ import {
 
 const RADIUS = 14
 const PC_WIDTH = 380
+const SP_WIDTH = 90
 const BAR_HEIGHT = 50
-const PC_LINE_WIDTH = 4
-const PC_BUTTON_SIZE = 55
+const LINE_WIDTH = 4
+const BUTTON_SIZE = 55
 
 export const Container = styled.div`
-  width: ${PC_WIDTH}px;
+  width: ${props => (props.sp ? `${SP_WIDTH}%` : `${PC_WIDTH}px`)};
   border-radius: ${RADIUS}px;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
   opacity: 0;
   transition: all 0.4s ease-out 0s;
 
-  &:hover {
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
-  }
+
+  /* focus */
+  ${props =>
+    !props.sp
+      ? css`
+          &:hover {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.15);
+          }
+        `
+      : ``}
 
   /* animation */
   animation: ${popupModal} 0.45s ease 0s forwards;
@@ -60,7 +68,7 @@ export const HeaderWrapper = styled.div`
     ${BAR_HEIGHT / 2}px;
   border-radius: ${RADIUS}px ${RADIUS}px 0 0;
   background-color: ${props => props.mainColor};
-  border-bottom: dashed ${PC_LINE_WIDTH / 2}px ${props => props.subColor};
+  border-bottom: dashed ${LINE_WIDTH / 2}px ${props => props.subColor};
   transition: all 0.4s cubic-bezier(0.68, 0.02, 0.25, 1) 0s;
 
   &[data-open='true'] {
@@ -112,7 +120,7 @@ export const FooterWrapper = styled.div`
   background-color: ${props => props.mainColor};
   height: ${BAR_HEIGHT}px;
   border-radius: 0 0 ${RADIUS}px ${RADIUS}px;
-  border-top: dashed ${PC_LINE_WIDTH / 2}px ${props => props.subColor};
+  border-top: dashed ${LINE_WIDTH / 2}px ${props => props.subColor};
 `
 
 const Button = styled.button`
@@ -122,8 +130,8 @@ const Button = styled.button`
   margin: 0;
   position: relative;
   display: block;
-  width: ${PC_BUTTON_SIZE}px;
-  height: ${PC_BUTTON_SIZE}px;
+  width: ${BUTTON_SIZE}px;
+  height: ${BUTTON_SIZE}px;
   border-radius: 50%;
   transform: translateY(-50%);
   cursor: pointer;
@@ -157,14 +165,19 @@ const Button = styled.button`
   }
 
   /* hover */
-  &:hover {
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-  }
+  ${props =>
+    !props.sp
+      ? css`
+          &:hover {
+            box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+          }
+        `
+      : ``}
 `
 
 export const OkButton = styled(Button)`
   background-color: ${props => props.okColor};
-  margin-left: ${PC_BUTTON_SIZE}px;
+  margin-left: ${BUTTON_SIZE}px;
 
   .line-box {
     position: absolute;
@@ -178,11 +191,11 @@ export const OkButton = styled(Button)`
       position: absolute;
       right: 0;
       bottom: 0;
-      border-radius: ${PC_LINE_WIDTH / 2}px;
+      border-radius: ${LINE_WIDTH / 2}px;
 
       &:first-child {
         width: 80%;
-        height: ${PC_LINE_WIDTH}px;
+        height: ${LINE_WIDTH}px;
 
         &::before,
         &::after {
@@ -190,7 +203,7 @@ export const OkButton = styled(Button)`
         }
       }
       &:last-child {
-        width: ${PC_LINE_WIDTH}px;
+        width: ${LINE_WIDTH}px;
         height: 100%;
 
         &::before,
@@ -202,12 +215,17 @@ export const OkButton = styled(Button)`
   }
 
   /* hover */
-  &:hover .line:first-child::after {
-    animation: ${slideRight} 0.15s ease 0s forwards;
-  }
-  &:hover .line:last-child::after {
-    animation: ${slideTop} 0.15s ease 0.15s forwards;
-  }
+  ${props =>
+    !props.sp
+      ? css`
+          &:hover .line:first-child::after {
+            animation: ${slideRight} 0.15s ease 0s forwards;
+          }
+          &:hover .line:last-child::after {
+            animation: ${slideTop} 0.15s ease 0.15s forwards;
+          }
+        `
+      : ``}
 
   /* animation */
   animation: ${popupButton} 0.45s ease 0.4s forwards;
@@ -233,8 +251,8 @@ export const CancelButton = styled(Button)`
     top: 50%;
     left: 50%;
     width: 50%;
-    height: ${PC_LINE_WIDTH}px;
-    border-radius: ${PC_LINE_WIDTH / 2}px;
+    height: ${LINE_WIDTH}px;
+    border-radius: ${LINE_WIDTH / 2}px;
 
     &::before,
     &::after {
@@ -249,12 +267,17 @@ export const CancelButton = styled(Button)`
   }
 
   /* hover */
-  &:hover .line:first-child::after {
-    animation: ${slideRight} 0.15s ease 0s forwards;
-  }
-  &:hover .line:last-child::after {
-    animation: ${slideRight} 0.15s ease 0.15s forwards;
-  }
+  ${props =>
+    !props.sp
+      ? css`
+          &:hover .line:first-child::after {
+            animation: ${slideRight} 0.15s ease 0s forwards;
+          }
+          &:hover .line:last-child::after {
+            animation: ${slideRight} 0.15s ease 0.15s forwards;
+          }
+        `
+      : ``}
 
   /* animation */
   animation: ${popupButton} 0.45s ease 0.5s forwards;

@@ -61,9 +61,11 @@ const Footer = ({
   isOpenMessage,
   closeModal,
   openMessage,
+  sp,
 }) => (
   <FooterWrapper mainColor={mainColor} subColor={subColor}>
     <CancelButton
+      sp={sp}
       data-open={isOpenMessage}
       onClick={closeModal}
       cancelColor={cancelColor}
@@ -75,6 +77,7 @@ const Footer = ({
       </div>
     </CancelButton>
     <OkButton
+      sp={sp}
       data-open={isOpenMessage}
       onClick={openMessage}
       okColor={okColor}
@@ -127,10 +130,13 @@ export default class MessageModal extends Component {
   }
 
   render() {
+    const { sp = false, className = 'message-modal' } = this.props
     const { isClose } = this.state
 
     return (
       <Container
+        className={className}
+        sp={sp}
         data-close={isClose}
         onAnimationEnd={e => {
           if (e.animationName === 'message-modal__close') this.onCloseModal()
@@ -153,6 +159,7 @@ export default class MessageModal extends Component {
 }
 
 MessageModal.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   fontColor: PropTypes.string,
@@ -161,4 +168,5 @@ MessageModal.propTypes = {
   mainColor: PropTypes.string,
   subColor: PropTypes.string,
   onClose: PropTypes.func,
+  sp: PropTypes.bool,
 }
