@@ -48,6 +48,7 @@ const props = {
   subColor,    // [type: string][options] モーダルのサブカラー
   onClose,     // [type: func][options] モーダルを閉じた時に呼ばれる関数
   sp,          // [type: bool][options] スマートフォンか否か
+  className,   // [type: string][options] class名
 }
 
 /*
